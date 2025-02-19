@@ -1,17 +1,17 @@
 const express = require("express");
 const router = express.Router();
 
-// Simulación de una base de datos en memoria (puedes cambiarlo a MongoDB/MySQL)
+
 let mensajesDB = {};
 
-// 📌 Ruta para obtener mensajes de un canal específico
+
 router.get("/mensajes/:canal", (req, res) => {
     const { canal } = req.params;
     const mensajes = mensajesDB[canal] || [];
     res.json(mensajes);
 });
 
-// 📌 Ruta para recibir y guardar un nuevo mensaje
+
 router.post("/mensajes", (req, res) => {
     const { canal, texto } = req.body;
 
