@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 
-// 📌 Definir esquema y modelo de mensajes
+
 const mensajeSchema = new mongoose.Schema({
     canal: { type: String, required: true },
     usuario: { type: String, default: "Anónimo" },
@@ -12,7 +12,7 @@ const mensajeSchema = new mongoose.Schema({
 
 const Mensaje = mongoose.model("Mensaje", mensajeSchema);
 
-// 📩 Obtener mensajes de un canal
+
 router.get("/:canal", async (req, res) => {
     try {
         const { canal } = req.params;
@@ -27,10 +27,10 @@ router.get("/:canal", async (req, res) => {
     }
 });
 
-// ✉️ Enviar mensaje a un canal
+
 router.post("/", async (req, res) => {
     try {
-        console.log("📩 Datos recibidos en el backend:", req.body); // Verifica en la terminal
+        console.log("📩 Datos recibidos en el backend:", req.body); 
 
         const { canal, usuario, texto } = req.body;
 
