@@ -2,11 +2,11 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const transporter = require("../config/emailConfig"); // Importamos Nodemailer
+const transporter = require("../config/emailConfig"); 
 
 const router = express.Router();
 
-// Registro de usuario con envío de email
+
 router.post("/register", async (req, res) => {
     try {
         const { nombre, email, password } = req.body;
@@ -20,7 +20,7 @@ router.post("/register", async (req, res) => {
         user = new User({ nombre, email, password: hashedPassword });
         await user.save();
 
-        // 📩 Enviar email de confirmación
+        
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
@@ -36,7 +36,7 @@ router.post("/register", async (req, res) => {
     }
 });
 
-// Login de usuario
+
 router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
