@@ -8,18 +8,18 @@ const transporter = nodemailer.createTransport({
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
     },
-    debug: true, // Activa logs detallados
-    logger: true, // Habilita el registro de eventos
+    debug: true, 
+    logger: true, 
 });
 
 const mailOptions = {
-    from: `"Mi App" <noreply@yourdomain.com>`, // Cambia a un dominio genérico
-    to: "correo@ejemplo.com", // Mailtrap interceptará este correo
+    from: `"Mi App" <noreply@yourdomain.com>`, 
+    to: "correo@ejemplo.com", 
     subject: "Test directo desde script",
     text: "Este es un test de correo sin Express ni MongoDB.",
 };
 
-// Enviar email de prueba
+
 transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
         console.error("❌ Error al enviar el correo:", error);
